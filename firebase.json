@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/angular-universal-flamelink",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

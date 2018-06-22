@@ -7,7 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "webpack:prerender": "webpack --config webpack.prerender.config.js",
+    "build:prerender": "node dist/angular-universal-flamelink/prerender.js",
+    "serve:prerender": "http-server dist/angular-universal-flamelink -o",
+    "build:all": "ng build --prod && ng run angular-universal-flamelink:server && npm run webpack:prerender && npm run build:prerender"
   },
   "private": true,
   "dependencies": {
@@ -19,21 +23,27 @@
     "@angular/http": "^6.0.3",
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
+    "@angular/platform-server": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
+    "angularfire2": "^5.0.0-rc.11",
     "core-js": "^2.5.4",
+    "firebase": "^5.0.4",
+    "flamelink": "^0.17.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "^6.0.3",
     "@angular-devkit/build-angular": "~0.6.8",
-    "typescript": "~2.7.2",
     "@angular/cli": "~6.0.8",
+    "@angular/compiler-cli": "^6.0.3",
     "@angular/language-service": "^6.0.3",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
+    "fs-extra": "^6.0.1",
+    "http-server": "^0.11.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
@@ -42,7 +52,12 @@
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.3.0",
+    "ts-loader": "^4.4.1",
     "ts-node": "~5.0.1",
-    "tslint": "~5.9.1"
+    "tslint": "~5.9.1",
+    "typescript": "~2.7.2",
+    "webpack-cli": "^3.0.8",
+    "ws": "^5.2.0",
+    "xmlhttprequest": "^1.8.0"
   }
 }
